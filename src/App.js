@@ -25,11 +25,9 @@ const App = () => {
     }
   };
 
-  //affichage d'une fact au lancement
   useEffect(() => {
     fetchJoke();
   }, []);
-  //affichage d'une fact lors de l'appui sur le bouton
   const actionButton = () => {
     fetchJoke();
   };
