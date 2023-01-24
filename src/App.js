@@ -6,65 +6,24 @@
  * @flow strict-local
  */
 
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+
+const Stack = createNativeStackNavigator();
+
 import React from 'react';
-import {style} from './styles/global';
-import {useState, useEffect} from 'react';
-import type {Node} from 'react';
-import {TouchableOpacity, Text, View} from 'react-native';
+import HomeScreen from './screens/Home';
+import ChuckScreen from './screens/Chuck';
 
-const App = () => {
-  const [data, setData] = useState([]);
-
-  const fetchJoke = async () => {
-    try {
-      const response = await fetch('https://api.chucknorris.io/jokes/random');
-      const jsonData = await response.json();
-      setData(jsonData.value);
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
-  useEffect(() => {
-    fetchJoke();
-  }, []);
-  const actionButton = () => {
-    fetchJoke();
-  };
-
+function App() {
   return (
-    <>
-      <View>
-        <TouchableOpacity onPress={actionButton}>
-          <Text style={style.text}>Click me</Text>
-        </TouchableOpacity>
-      </View>
-      <View>
-        <Text>{data}</Text>
-      </View>
-    </>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Chuck" component={ChuckScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
-};
-/*  useEffect(() => {
-    console.log('useEffect');
-  }, []);
-  const [count, setCount] = useState(0);
-  const onPressHandler = () => {
-    setCount(count + 1);
-  };
-  return (
-    <>
-      <View>
-        <Text style={style.text}>hello world</Text>
-      </View>
-      <View>
-        <TouchableOpacity onPress={onPressHandler}>
-          <Text>click me</Text>
-          <Text>{count}</Text>
-        </TouchableOpacity>
-      </View>
-    </>
-  );
-};*/
+}
 
 export default App;
