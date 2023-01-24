@@ -25,7 +25,4 @@ export const style = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
   },
-
 });
-
-
