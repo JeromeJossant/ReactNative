@@ -7,6 +7,7 @@ const Home = ({navigation}) => {
         title="Chuk Norris Facts"
         onPress={() => navigation.navigate('Chuck')}
       />
+      <Button title="Login" onPress={() => navigation.navigate('Login')} />
     </View>
   );
 };
