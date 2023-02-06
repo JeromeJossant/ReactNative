@@ -18,6 +18,8 @@ import LoginScreen from './screens/Login';
 import RegisterScreen from './screens/Register';
 import SessionScreen from './screens/Session';
 import SignerScreen from './screens/Signer';
+import LessonScreen from './screens/Lesson';
+import ProfileScreen from './screens/Profile';
 
 function App() {
 
@@ -31,12 +33,15 @@ function App() {
                     <Stack.Screen name="Chuck" component={ChuckScreen} />
                     <Stack.Screen name="Session" component={SessionScreen} />
                     <Stack.Screen name="Signer" component={SignerScreen} />
+                    <Stack.Screen name="Profile" component={ProfileScreen} />
                 </Stack.Navigator>
             </NavigationContainer>
         ) : (
             <NavigationContainer>
                 <Stack.Navigator>
                     <Stack.Screen name="Login" component={LoginScreen} />
+                    <Stack.Screen name="Lesson" component={LessonScreen} />
+                    <Stack.Screen name="Profile" component={ProfileScreen} />
                     <Stack.Screen name="Register" component={RegisterScreen} />
                 </Stack.Navigator>
             </NavigationContainer>

@@ -1,43 +1,44 @@
 import {useState} from 'react';
 import {Button, TextInput, View} from 'react-native';
+import axios from 'axios';
+import {useNavigation} from '@react-navigation/native';
 
 const Login = () => {
-  const [login, setLogin] = useState({
-    email: '',
-    password: '',
-  });
+  const navigation = useNavigation();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState(null);
 
-  const onChangeHanlder = event => {
-    const {name, value} = event.target;
-    setLogin({...login, [name]: value});
-  };
 
-  const onClickHandler = () => {
-    const res = fetch('', {
-      method: 'POST',
-      body: JSON.stringify(login),
-      credentials: 'include',
-    });
+  const handleSubmit = async () => {
+    try {
+      const response = await axios.post(
+        'http://10.7.17.64:4500/students/login',
+        {
+          email,
+          password,
+      });
+
+      navigation.navigate('Profile');
+    } catch (e) {
+      setError('Invalid credentials, please try again.');
+    }
   };
 
   return (
     <>
       <View>
+        <TextInput value={email} onChangeText={setEmail} placeholder="Email" />
         <TextInput
-          name="email"
-          placeholder="Email"
-          value={login.email}
-          onChangeText={onChangeHanlder}
-        />
-        <TextInput
-          name="password"
           placeholder="Password"
-            value={login.password}
-            onChangeText={onChangeHanlder}
-          />
-          <Button title="Login" onPress={onClickHandler} />
-        </View>
-      </>
+          value={password}
+          onChangeText={setPassword}
+          secureTextEntry
+        />
+        <Button title="Login" onPress={handleSubmit} />
+        {error && <TextInput>{error}</TextInput>}
+      </View>
+    </>
   );
 };
 
