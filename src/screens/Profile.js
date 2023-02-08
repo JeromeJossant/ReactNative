@@ -7,16 +7,16 @@ const Profile = () => {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        const fetchData = async () => {
+        const me = async () => {
             try {
-                const response = await axios.get('http://10.7.17.64:4500/students/me');
+                const response = await axios.get('http://10.7.18.186:4500/students/me');
                 setUserData(response.data);
             } catch (e) {
                 setError('Error fetching user data.');
             }
         };
 
-        fetchData();
+        me();
     }, []);
 
     return (
@@ -25,8 +25,8 @@ const Profile = () => {
                 <Text>{error}</Text>
             ) : (
                 <>
-                    <Text>Name: {userData.firstname}</Text>
-                    <Text>Email: {userData.lastname}</Text>
+                    <Text>Prénom: {userData.firstname}</Text>
+                    <Text>Nom: {userData.lastname}</Text>
                 </>
             )}
         </View>
