@@ -1,6 +1,6 @@
 import {View, Text} from 'react-native';
 import {useEffect, useState} from 'react';
-import {getLessons} from '../services/Lessons';
+import {getLessons} from '../../services/Lessons';
 
 const Lesson = ({navigation}) => {
   const [lessons, setLessons] = useState([]);

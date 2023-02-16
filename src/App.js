@@ -12,21 +12,30 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 const Stack = createNativeStackNavigator();
 
 import React from 'react';
-import HomeScreen from './screens/Home';
-import ChuckScreen from './screens/Chuck';
+import HomeScreen from './screens/home/Home';
+import ChuckScreen from './screens/home/Chuck';
 import LoginScreen from './screens/Login';
+import AppScreen from './screens/AppScreen';
 import RegisterScreen from './screens/Register';
 import SessionScreen from './screens/Session';
 import SignerScreen from './screens/Signer';
-import LessonScreen from './screens/Lesson';
-import ProfileScreen from './screens/Profile';
+import LessonScreen from './screens/home/Lesson';
+import ProfileScreen from './screens/compte/Profile';
 
 function App() {
 
     let isSigneIn = false;
 
     return (
-        isSigneIn ? (
+
+        <NavigationContainer>
+            <Stack.Navigator>
+                <Stack.Screen name="login"  component={LoginScreen}></Stack.Screen>
+                <Stack.Screen name="AppScreen" options={{headerShown: false}} component={AppScreen} />
+            </Stack.Navigator>
+        </NavigationContainer>
+
+      /*  isSigneIn ? (
             <NavigationContainer>
                 <Stack.Navigator>
                     <Stack.Screen name="Home" component={HomeScreen} />
@@ -45,7 +54,7 @@ function App() {
                     <Stack.Screen name="Register" component={RegisterScreen} />
                 </Stack.Navigator>
             </NavigationContainer>
-        )
+        )*/
     )}
 
 export default App;

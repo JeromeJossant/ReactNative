@@ -1,6 +1,6 @@
 import React from 'react';
 import {useState, useEffect} from 'react';
-import {style} from '../styles/global';
+import {style} from '../../styles/global';
 import {Text, TouchableOpacity, View} from 'react-native';
 
 const Chuck = () => {

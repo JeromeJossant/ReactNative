@@ -19,9 +19,7 @@ const Session = () => {
       <View>
         <Text>Lesson</Text>
         <View>
-          {sessions.map(session => (
-            <Text> {session.label} </Text>
-          ))}
+          {sessions.map(session => <Text key={session._id}> {session.label} </Text>)}
         </View>
       </View>
     </>

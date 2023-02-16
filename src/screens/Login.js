@@ -2,7 +2,7 @@ import {useState} from 'react';
 import {Button, TextInput, View} from 'react-native';
 import axios from 'axios';
 import {useNavigation} from '@react-navigation/native';
-import {handleSubmit} from '../services/Auth'
+import {login} from '../services/Auth'
 const Login = () => {
   const navigation = useNavigation();
   const [email, setEmail] = useState('');
@@ -11,27 +11,12 @@ const Login = () => {
 
 
   const OnPressHandler = async (event) => {
-    const res = await handleSubmit({
+    const res = await login({
       email,
       password
-    },
-        navigation.navigate('Profile')
-  )
+    })
+      navigation.navigate('AppScreen')
   }
-/*  const handleSubmit = async () => {
-    try {
-      const response = await axios.post(
-        'http://10.7.18.186:4500/students/login',
-        {
-          email,
-          password,
-      });
-
-      navigation.navigate('Profile');
-    } catch (e) {
-      setError(' ');
-    }
-  };*/
 
   return (
     <>
