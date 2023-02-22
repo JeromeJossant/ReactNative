@@ -5,7 +5,7 @@ import { View, Text, TouchableOpacity } from 'react-native'
 import {getMeApi} from '../../services/Students'
 
 const Profile = ({navigation}) => {
-    const [students, setStudents] = useState([]);
+    const [students, setStudents] = useState([{}])
     useEffect(() => {
         const getMe = async () => {
             console.log('getMe')
@@ -21,7 +21,6 @@ const Profile = ({navigation}) => {
         navigation.navigate('Chuck');
     }
 
-    console.log("students:", students);
     return (
         <>
         <View>

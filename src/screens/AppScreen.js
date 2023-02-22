@@ -12,7 +12,7 @@ const AppScreen = ({ navigation }) => {
         <NavigationContainer independent={true}>
             <Tab.Navigator screenOptions={({ route }) => ({
                 tabBarStyle: {
-                    backgroundColor: '#0a4f5e',
+                    backgroundColor: '#1e1e1e',
                 },
                 tabBarActiveTintColor: '#fdc86b',
                 tabBarInactiveTintColor: 'white',
